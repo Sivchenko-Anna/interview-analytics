@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import AppMenubar from '@/main'
 
 const menuItems = ref([
   {
@@ -27,7 +26,14 @@ const menuItems = ref([
 </script>
 
 <template>
-  <app-menubar :model="menuItems" class="menu" />
+  <app-menubar :model="menuItems" class="menu">
+    <template #item="{ item, props }">
+      <router-link :to="item.path" class="flex align-items-center" v-bind="props.action">
+        <span :class="item.icon" class="p-menuitem-icon"></span>
+        <span class="nl-2">{{item.label}}</span>
+      </router-link>
+    </template>
+  </app-menubar>
 </template>
 
 <style scoped>
