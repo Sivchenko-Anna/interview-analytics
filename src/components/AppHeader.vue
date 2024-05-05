@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const menuItems = ref([
+interface IMenuItem {
+  label: string,
+  icon: string,
+  path: string,
+}
+
+const menuItems = ref<IMenuItem[]>([
   {
     label: 'Авторизация',
     icon: 'pi pi-user',
@@ -30,18 +36,18 @@ const menuItems = ref([
     <template #item="{ item, props }">
       <router-link :to="item.path" class="flex align-items-center" v-bind="props.action">
         <span :class="item.icon" class="p-menuitem-icon"></span>
-        <span class="nl-2">{{item.label}}</span>
+        <span class="nl-2">{{ item.label }}</span>
       </router-link>
     </template>
   </app-menubar>
 </template>
 
 <style scoped>
-  .menu {
-    margin: 30px 0;
-  }
+.menu {
+  margin: 30px 0;
+}
 
-  .menu-exit {
-    cursor: pointer;
-  }
+.menu-exit {
+  cursor: pointer;
+}
 </style>

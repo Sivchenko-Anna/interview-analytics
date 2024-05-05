@@ -3,6 +3,18 @@ import AppHeader from '@/components/AppHeader.vue'
 </script>
 
 <template>
-  <app-header />
-  <RouterView />
+  <div class="container">
+    <app-header />
+    <div class="content">
+      <RouterView />
+    </div>
+  </div>
 </template>
+
+<style scoped>
+.container {
+  max-width: 1200px;
+  padding: 20px;
+  margin: auto;
+}
+</style>
